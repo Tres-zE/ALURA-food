@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Box, Typography } from "@mui/material";
 import { LogoSpace, FormSpace, Img } from "./styles";
 import DatosUsuario from "./DatosUsuario";
@@ -8,6 +8,41 @@ import Complete from "./Complete";
 import Stepper from "../Stepper";
 
 const Form = () => {
+
+  const [step,setStep] = useState(3)
+  //REFERENCIA
+  // step = 0 ------> <DatosUsuario />
+  // step = 1 ------> <DatosPersonales />
+  // step = 2 ------> <DatosEntrega />
+  // step = 3 ------> <Complete />
+  //FORMA1 CON SWITCH
+  //  const selectStep = () => {
+  //    switch(step){
+  //     case 0: return <DatosUsuario />
+  //     break;
+  //     case 1: return <DatosPersonales />
+  //     break;
+  //     case 2: return <DatosEntrega />
+  //     break;
+  //     case 3: return <Complete />
+  //   }
+  //  }
+
+  //   FORMA 2 CON ARREGLO
+  //   const steps =[
+  //     0: <DatosUsuario />, 
+  //     1: <DatosPersonales />, 
+  //     2: <DatosEntrega />, 
+  //     3: <Complete />
+  // ]
+  //FORMA 3 COMO OBJETO
+  const steps ={
+    0: <DatosUsuario />, 
+    1: <DatosPersonales />, 
+    2: <DatosEntrega />, 
+    3: <Complete />
+  }
+
   return (
     <Box
       sx={{
@@ -21,9 +56,11 @@ const Form = () => {
         <Typography variant="h3">AluraFood</Typography>
       </LogoSpace>
       <FormSpace>
-        <DatosUsuario />
+        {step <3 && <Stepper step = {step}/>}
+        {/* <DatosUsuario />
         <DatosPersonales />
-        <DatosEntrega />
+        <DatosEntrega /> */}
+        {steps[step]}
       </FormSpace>
     </Box>
   );
