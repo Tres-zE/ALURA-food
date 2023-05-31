@@ -9,7 +9,7 @@ import Stepper from "../Stepper";
 
 const Form = () => {
 
-  const [step,setStep] = useState(3)
+  const [step,setStep] = useState(0)
   //REFERENCIA
   // step = 0 ------> <DatosUsuario />
   // step = 1 ------> <DatosPersonales />
@@ -36,10 +36,16 @@ const Form = () => {
   //     3: <Complete />
   // ]
   //FORMA 3 COMO OBJETO
+
+  const updateStep = (step) => {
+    console.log("actualizar paso", step)
+    setStep(step)
+  }
+
   const steps ={
-    0: <DatosUsuario />, 
-    1: <DatosPersonales />, 
-    2: <DatosEntrega />, 
+    0: <DatosUsuario  updateStep = {updateStep}/>, 
+    1: <DatosPersonales updateStep = {updateStep}/>, 
+    2: <DatosEntrega updateStep = {updateStep}/>, 
     3: <Complete />
   }
 
