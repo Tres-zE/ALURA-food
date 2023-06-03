@@ -51,7 +51,7 @@ const DatosUsuario = ({updateStep}) => {
           margin="dense"
           type="password"
           error={password.valid === false}
-          helperText={password.valid === false &&"Ingresa una contraseña valida, al menos de 6 caracteres y maximo 20"}
+          helperText={password.valid === false &&"Ingresa una contraseña valida, al menos de 8 caracteres y maximo 20"}
           value={password.value}
           onChange={(input) => {
             const password = input.target.value
