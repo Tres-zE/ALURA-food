@@ -53,7 +53,9 @@ const Form = () => {
     3: <Complete />
   }
 
-  const onSubmit = () =>{}
+  const onSubmit = () =>{
+
+  }
 
   const handleChange = (element, position, currentStep, validator) => {
     const value = element.target.value
@@ -63,6 +65,9 @@ const Form = () => {
     console.log("position", position)
     console.log("currentStep", currentStep)
     console.log("validator", validator)
+
+    stepsFlow[0].inputs[0].label = "Nombre"
+    console.log(stepsFlow)
   }
 
   const stepsFlow = {
@@ -84,7 +89,7 @@ const Form = () => {
           valid: null,
           onchange: handleChange,
           helperText: "Ingresa una contraseña valida, al menos de 8 caracteres y maximo 20",
-          validator: validarPassword
+          validator: validarPassword,
         },
       ],
       buttonText: "Siguiente",
