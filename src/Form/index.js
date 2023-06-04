@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Box, Typography } from "@mui/material";
 import { LogoSpace, FormSpace, Img } from "./styles";
 import DatosUsuario from "./DatosUsuario";
@@ -14,6 +14,11 @@ import { validarEmail, validarPassword } from "./DatosUsuario/Validaciones";
 const Form = () => {
 
   const [step,setStep] = useState(0)
+  const [pasos,setPasos] = useState({})
+
+  useEffect(() => {
+    console.log("useEffect")
+  })
   //REFERENCIA
   // step = 0 ------> <DatosUsuario />
   // step = 1 ------> <DatosPersonales />
