@@ -19,6 +19,27 @@ const Form = () => {
   useEffect(() => {
     console.log("useEffect")
   })
+
+  useEffect(() => {
+    console.log("Se ha actualizado el step: ", step)
+  }, [step])
+
+  //ASI SE MANDA A LLAMAR UNA API
+  // useEffect(() => {
+  //   async function getData(){
+  //     try{
+  //     const data = await fetch("https://jsonplaceholder.typicode.com/posts")
+  //     const posts = await data.json()
+  //     console.log(posts)
+  //   }catch(e){
+  //     console.log(e)
+  //   }
+  //   }
+
+  //   getData()
+     
+  // })
+
   //REFERENCIA
   // step = 0 ------> <DatosUsuario />
   // step = 1 ------> <DatosPersonales />
@@ -58,8 +79,14 @@ const Form = () => {
     3: <Complete />
   }
 
-  const onSubmit = () =>{
+  console.log("FORM COMPONENT")
 
+  const onSubmit = (e) =>{
+    e.preventDefault()
+    let newStep = step + 1
+    setStep(newStep)
+    console.log("newStep", newStep)
+    console.log(step)
   }
 
   const handleChange = (element, position, currentStep, validator) => {
@@ -77,6 +104,30 @@ const Form = () => {
 
   const stepsFlow = {
     0: {
+      inputs: [
+        {
+          label: "Correo electronico",
+          type: "email",
+          value: "",
+          valid: null,
+          onchange: handleChange,
+          helperText: "Ingresa un correo electronico valido",
+          validator: validarEmail,
+        },
+        {
+          label: "Contraseña",
+          type: "password",
+          value: "",
+          valid: null,
+          onchange: handleChange,
+          helperText: "Ingresa una contraseña valida, al menos de 8 caracteres y maximo 20",
+          validator: validarPassword,
+        },
+      ],
+      buttonText: "Siguiente",
+      onSubmit
+    },
+    1: {
       inputs: [
         {
           label: "Correo electronico",
